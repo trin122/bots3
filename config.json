@@ -14,7 +14,7 @@
     "BOTNAME": " SegsBot ",
     "AMDIN_NAME": "TRIN",
     "FACEBOOK_ADMIN": "https://www.facebook.com/trin.1905",
-    "PREFIX": ".",
+    "PREFIX": "/",
     "ADMINBOT": [
         "100000194247253",
         "61554857334283"
