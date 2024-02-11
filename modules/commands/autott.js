@@ -97,7 +97,7 @@ const nam = [{
 
              {
                  timer: '3:30:00 PM',
-                 message: ['𝗖𝗼́ 𝘁𝗵𝗲̂̉ 𝗯𝗮̣𝗻 𝘁𝗵𝘂̛̀𝗮 𝗯𝗶𝗲̂́𝘁: {caunoi}\n━━━━━━━━━━━━━\n➝ Đ𝗮̂𝘆 𝗹𝗮̀ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝘁𝘂̛̣ đ𝗼̣̂𝗻𝗴']
+                 message: ['𝑪𝒂̂𝒖 𝒏𝒐́𝒊 𝒌𝒊𝒏𝒉 đ𝒊𝒆̂̉𝒏: {caunoi}\n━━━━━━━━━━━━━\n➝ Đ𝗮̂𝘆 𝗹𝗮̀ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝘁𝘂̛̣ đ𝗼̣̂𝗻𝗴']
              },
 
              {
@@ -132,7 +132,7 @@ const nam = [{
 
              {
                  timer: '7:30:00 PM',
-                 message: ['𝘊𝐚̂𝘶 𝘯𝑜́𝘪 𝘬𝘪𝘯𝘩 đ𝘪𝑒̂̉𝘯: {thuabiet}\n━━━━━━━━━━━━━\n➝ Đ𝗮̂𝘆 𝗹𝗮̀ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝘁𝘂̛̣ đ𝗼̣̂𝗻𝗴']
+                 message: ['𝘊𝐚̂𝘶 𝘯𝑜́𝘪 𝘬𝘪𝘯𝘩 đ𝘪𝑒̂̉𝘯: {caunoi}\n━━━━━━━━━━━━━\n➝ Đ𝗮̂𝘆 𝗹𝗮̀ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝘁𝘂̛̣ đ𝗼̣̂𝗻𝗴']
              },
 
              {
@@ -201,7 +201,7 @@ module.exports.onLoad = o => setInterval(async () => {
         var minutes = Math.floor((time % (60 * 60)) / 60);
         var seconds = Math.floor(time % 60);
         var msg = r(á.message);
-        const res = await axios.get(`https://api.popcat.xyz/weather?q=${encodeURI('Hồ Chí Minh')}`);
+        const res = await axios.get(`https://api.popcat.xyz/weather?q=${encodeURI('Hà Nội')}`);
         var abc = `===「𝗧𝗕 𝗧𝗵𝗼̛̀𝗶 𝗧𝗶𝗲̂́𝘁」===\n━━━━━━━━━━━\n→『📌』𝗰𝗮̣̂𝗽 𝗻𝗵𝗮̣̂𝘁 𝘁𝗵𝗼̛̀𝗶 𝘁𝗶𝗲̂́𝘁 𝘁𝗮̣𝗶: ${res.data[0].location.name}\n→『⏰』𝗩𝗮̀𝗼 𝗹𝘂́𝗰: ${res.data[0].current.day} ${res.data[0].current.date}\n→『🌡️』𝗡𝗵𝗶𝗲̣̂𝘁 đ𝗼̣̂: ${res.data[0].current.temperature}°${res.data[0].location.degreetype}\n→『📋』𝗠𝗼̂ 𝘁𝗮̉: ${res.data[0].current.skytext}\n→『☁️』đ𝗼̣̂ 𝗮̂̉𝗺: ${res.data[0].current.humidity}\n→『💨』𝗛𝘂̛𝗼̛́𝗻𝗴 𝗴𝗶𝗼́: ${res.data[0].current.winddisplay}\n→『📥』𝗚𝗵𝗶 𝗻𝗵𝗮̣̂𝗻 𝘃𝗮̀𝗼 𝗹𝘂́𝗰: ${res.data[0].current.observationtime}\n→ 𝗧𝘂̛̀ 𝘁𝗿𝗮̣𝗺 𝘃𝘂̃ 𝘁𝗿𝘂̣ nasa 🚀`;
         msg = msg.replace(/{abc}/, abc);
         msg = msg.replace(/{hours}/g, hours)
