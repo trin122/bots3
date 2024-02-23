@@ -91,7 +91,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
     fs.removeSync(pathAvt1);
 		api.sendMessage({body: messsage, mentions: [{ tag: name, id: senderID }], attachment: fs.createReadStream(pathImg) }, event.threadID, async (a, b) => {
 		fs.unlinkSync(pathImg);
-		await new Promise(a => setTimeout(a, 1000*10));
+		await new Promise(a => setTimeout(a, 1000*50));
 		return api.unsendMessage(b.messageID)
 		});    
 }
