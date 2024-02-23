@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "autobanuser",
+  name: "autobanuser1",
   version: "1.0.0",
   hasPermssion: 0, 
   credits: "SINGU-💌💌",
