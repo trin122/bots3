@@ -5,7 +5,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "DuyVuongUwU",// Mod by Tuấn
   description: "Bàn tài xỉu nhiều người chơi",
-  commandCategory: "Trò Chơi",
+  commandCategory: "Trò chơi",
   usages: "[new/leave/start/end]",
   cooldowns: 5
 };
