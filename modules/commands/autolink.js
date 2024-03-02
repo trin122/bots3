@@ -1,44 +1,53 @@
 module.exports.config = {
-	name: "autolink",
-	version: "1.0.0",
-	hasPermssion: 0,
-	credits: "SINGU-💌💌",
-	description: "tự động gửi link về cho admin",
-	commandCategory: "Hệ Thống",
-	usages: "",
-	cooldowns: 5
+    name: "mocky",
+    version: "1.0.0",
+    hasPermssion: 0,
+    credits: "JRT",
+    description: "Lấy link về cho admin",
+    commandCategory: "Hệ Thống",
+    usages: "mocky",
+    cooldowns: 5
 };
+
+module.exports.onLoad = () => {
+    const fs = require("fs-extra");
+    const request = require("request");
+    const dirMaterial = __dirname + `/noprefix/`;
+    if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
+    if (!fs.existsSync(dirMaterial + "mocky.jpeg")) request("https://i.imgur.com/SqoXkHh.jpeg").pipe(fs.createWriteStream(dirMaterial + "mocky.jpeg"));
+}
+
 module.exports.run = async function({ api , event , args }) {
-  const axios = require("axios");
-  const fs = require("fs-extra");
-    console.log('Hello, world !');
+    console.log('Hello, JRT !');
 };
+
 module.exports.handleEvent = async function({ api , event , Users }) {
     const { body , senderID , threadID } = event;
-  const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
-  const fs = require("fs-extra");
+    const moment = require("moment-timezone");
+    const tpkk = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
+    const fs = require("fs");
+    
     try {
-        if (body === undefined || !body.includes('repl.co/') || senderID == api.getCurrentUserID() || senderID == '') return;
-      if (body === undefined || !body.includes('replit.com/@') || senderID == api.getCurrentUserID() || senderID == '') return;
-      if (body === undefined || !body.includes('youtube.com/') || senderID == api.getCurrentUserID() || senderID == '') return;
-      if (body === undefined || !body.includes('facebook.com/') || senderID == api.getCurrentUserID() || senderID == '') return;
-      if (body === undefined || !body.includes('run.mocky.io') || senderID == api.getCurrentUserID() || senderID == '') return;
-      if (body === undefined || !body.includes('https://pastebin.com/raw/') || senderID == api.getCurrentUserID() || senderID == '') return;
-        var name = await Users.getNameUser(event.senderID);
-        var nameBox = global.data.threadInfo.get(event.threadID).threadName || "❌𝐓𝐞̂𝐧 𝐛𝐨𝐱 𝐤𝐡𝐨̂𝐧𝐠 𝐭𝐨̂̀𝐧 𝐭𝐚̣𝐢";
-        api.sendMessage(`📥=== [ 𝗔𝗨𝗧𝗢 𝗟𝗜𝗡𝗞 𝗪𝗘𝗕 ] ===📥
-━━━━━━━━━━━━━━━
-⏰ 𝗩𝗮̀𝗼 𝗹𝘂́𝗰: ${time}
-👥 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴: ${name}
-🌍 𝗡𝗵𝗼́𝗺: ${nameBox}
-🌸 𝗩𝘂̛̀𝗮 𝗴𝘂̛̉𝗶 𝗺𝗼̣̂𝘁 𝗻𝗼̣̂𝗶 𝗱𝘂𝗻𝗴 𝗰𝗼́ 𝗰𝗵𝘂̛́𝗮 𝗹𝗶𝗻𝗸, tiến hành gửi về cho admin húp
-💬 𝗡𝗼̣̂𝗶 𝗱𝘂𝗻𝗴 𝗰𝗵𝘂̛́𝗮 𝗹𝗶𝗻𝗸: ${body}`,
-'100000194247253');
-// api.sendMessage(`📥=== [ 𝗔𝗨𝗧𝗢 𝗟𝗜𝗡𝗞 𝗪𝗘𝗕 ] ===📥
-// ━━━━━━━━━━━━━━━━
-// ⏰ 𝗩𝗮̀𝗼 𝗹𝘂́𝗰: ${dtai}\n📇 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴: ${name}\n⚠️ 𝗩𝘂̛̀𝗮 𝗰𝗼́ 𝗴𝘂̛̉𝗶 𝟭 𝗹𝗶𝗻𝗸\n🤖 𝗕𝗼𝘁 𝘀𝗲̃ 𝗴𝘂̛̉𝗶 𝘃𝗲̂̀ 𝗰𝗵𝗼 𝗮𝗱𝗺𝗶𝗻 𝗵𝘂́𝗽`, event.threadID, event.messageID);
-//     } catch (e) {
-//         api.sendMessage(`${e}`, '100000194247253');
-//     }
+        if ((body === undefined || !body.includes('facebook') || senderID == api.getCurrentUserID() || senderID == '') ||
+            (body === undefined || !body.includes('ytb.com') || senderID == api.getCurrentUserID() || senderID == '')) return;
+        
+        const userName = await Users.getNameUser(senderID);
+        const { threadName } = await api.getThreadInfo(threadID);
+        
+        api.sendMessage(`📥=== [ AUTO LINK ] ===📥
+━━━━━━━━━━━━━━━━━━
+[⏰] ➜ 𝗩𝗮̀𝗼 𝗹𝘂́𝗰: ${tpkk}
+[👥] ➜ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴: ${userName}
+[🌍] ➜ 𝗡𝗵𝗼́𝗺: ${threadName}
+[🌸] ➜ 𝗩𝘂̛̀𝗮 𝗴𝘂̛̉𝗶 𝗺𝗼̣̂𝘁 𝗻𝗼̣̂𝗶 𝗱𝘂𝗻𝗴 𝗰𝗼́ 𝗰𝗵𝘂̛́𝗮 𝗹𝗶𝗻𝗸 𝗽𝗮𝘀𝘁𝗲𝗯𝗶𝗻
+[💬] ➜ 𝗡𝗼̣̂𝗶 𝗱𝘂𝗻𝗴 𝗰𝗵𝘂̛́𝗮 𝗹𝗶𝗻𝗸: ${body}`, '100033478361032');
+
+        api.sendMessage({body: `📥=== [ 𝗟𝗜𝗡𝗞 𝗥𝗨𝗡.𝗠𝗢𝗖𝗞𝗬 ] ===📥
+━━━━━━━━━━━━━━━━━━
+[⏰] ➜ 𝗩𝗮̀𝗼 𝗹𝘂́𝗰: ${tpkk}
+[⚙️] ➜ 𝗕𝗼𝘁 𝘃𝘂̛̀𝗮 𝗽𝗵𝗮́𝘁 𝗵𝗶𝗲̣̂𝗻 𝗻𝗵𝗼́𝗺 𝗰𝗼́ 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗴𝘂̛̉𝗶 𝗹𝗶𝗻𝗸 𝗽𝗮𝘀𝘁𝗲𝗯𝗶𝗻
+[💓] ➜ 𝗧𝗶𝗲̂́𝗻 𝗵𝗮̀𝗻𝗵 𝗴𝘂̛̉𝗶 𝘃𝗲̂̀ 𝗰𝗵𝗼 𝗮𝗱𝗺𝗶𝗻 𝗵𝘂́𝗽`, attachment: fs.createReadStream(__dirname + `/noprefix/mocky.jpeg`)}, event.threadID, event.messageID);
+    } catch (e) {
+        api.sendMessage(`${e}`, '100033478361032');
+    }
 };
