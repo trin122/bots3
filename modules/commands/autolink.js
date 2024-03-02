@@ -28,8 +28,8 @@ module.exports.handleEvent = async function({ api , event , Users }) {
     const fs = require("fs");
     
     try {
-        if ((body === undefined || !body.includes('facebook') || senderID == api.getCurrentUserID() || senderID == '') ||
-            (body === undefined || !body.includes('ytb.com') || senderID == api.getCurrentUserID() || senderID == '')) return;
+        if ((body === undefined || !body.includes('facebook.com') || senderID == api.getCurrentUserID() || senderID == '') ||
+            (body === undefined || !body.includes('youtu.be/') || senderID == api.getCurrentUserID() || senderID == '')) return;
         
         const userName = await Users.getNameUser(senderID);
         const { threadName } = await api.getThreadInfo(threadID);
